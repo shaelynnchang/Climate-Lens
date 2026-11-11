@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ClimateLens | CO2 Insights</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f3f7f4;
+    color: #24352c;
+}
+
+header {
+    background: #164b38;
+    color: white;
+    padding: 55px 10%;
+}
+
+header h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+section {
+    padding: 35px 10%;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 12px #00000010;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+    gap: 15px;
+}
+
+.stat {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.stat h2 {
+    color: #198754;
+    font-size: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td, th {
+    padding: 13px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+footer {
+    background: #164b38;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+canvas {
+    max-width: 600px;
+    margin: auto;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <p>SDG 13 | CLIMATE ACTION</p>
+    <h1>ClimateLens</h1>
+    <p>Understanding CO2 emissions through machine learning.</p>
+</header>
+
+<section>
+    <div class="card">
+        <h2>About the Project</h2>
+        <p>
+        ClimateLens is a machine learning project that uses
+        historical CO2 emissions data to classify countries
+        into high and non-high emission categories.
+        </p>
+        <p>
+        A Random Forest Classification algorithm analyzes
+        historical patterns to generate predictions for 2023.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Research Question</h2>
+        <p>
+        Can machine learning predict whether a country's
+        CO2 emissions will exceed a historical high-emission
+        threshold using its previous three years of data?
+        </p>
+    </div>
+</section>
+
+<section>
+    <h2>Model Performance</h2>
+
+    <div class="stats">
+        <div class="stat">
+            <h2>192</h2>
+            <p>Countries Analyzed</p>
+        </div>
+
+        <div class="stat">
+            <h2>49</h2>
+            <p>Predicted High</p>
+        </div>
+
+        <div class="stat">
+            <h2>143</h2>
+            <p>Predicted Not High</p>
+        </div>
+
+        <div class="stat">
+            <h2>99.9%</h2>
+            <p>Model Accuracy</p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="card">
+        <h2>Prediction Distribution</h2>
+        <canvas id="predictionChart"></canvas>
+    </div>
+
+    <div class="card">
+        <h2>Top 10 Predicted High-Emission Countries</h2>
+        <table>
+            <tr>
+                <th>Country</th>
+                <th>Prediction Probability</th>
+            </tr>
+            
+    <tr>
+        <td>UAE</td>
+        <td>100.00%</td>
+    </tr>
+    
+    <tr>
+        <td>Argentina</td>
+        <td>100.00%</td>
+    </tr>
+    
+    <tr>
+        <td>Australia</td>
+        <td>100.00%</td>
+    </tr>
+    
+    <tr>
+        <td>Belgium</td>
+        <td>100.00%</td>
+    </tr>
+    
+    <tr>
+        <td>Bangladesh</td>
+        <td>100.00%</td>
+    </tr>
+    
+    <tr>
+        <td>Canada</td>
+        <td>100.00%</td>
+    </tr>
+    
+    <tr>
+        <td>Brazil</td>
+        <td>100.00%</td>
+    </tr>
+    
+    <tr>
+        <td>Egypt</td>
+        <td>100.00%</td>
+    </tr>
+    
+    <tr>
+        <td>China</td>
+        <td>100.00%</td>
+    </tr>
+    
+    <tr>
+        <td>Spain</td>
+        <td>100.00%</td>
+    </tr>
+    
+        </table>
+    </div>
+</section>
+
+<section>
+    <div class="card">
+        <h2>Methodology</h2>
+        <ol>
+            <li>Historical CO2 emissions data collection.</li>
+            <li>Data cleaning and preprocessing.</li>
+            <li>Feature engineering using three previous years.</li>
+            <li>Random Forest Classification training.</li>
+            <li>Model evaluation and 2023 predictions.</li>
+        </ol>
+    </div>
+
+    <div class="card">
+        <h2>Limitations</h2>
+        <p>
+        Predictions are based on historical patterns and do
+        not account for every factor affecting emissions.
+        Classification results should not be interpreted as
+        actual measured 2023 emissions.
+        </p>
+    </div>
+</section>
+
+<footer>
+    <p>ClimateLens | Machine Learning Project | SDG 13</p>
+    <p>Climate Action Starts With Understanding.</p>
+</footer>
+
+<script>
+new Chart(document.getElementById('predictionChart'), {
+    type: 'doughnut',
+    data: {
+        labels: ['High', 'Not High'],
+        datasets: [{
+            data: [49, 143],
+            backgroundColor: ['#e69b53', '#198754']
+        }]
+    },
+    options: {
+        responsive: true
+    }
+});
+</script>
+
+</body>
+</html>
